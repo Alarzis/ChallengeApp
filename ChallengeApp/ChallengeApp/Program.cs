@@ -17,7 +17,7 @@ int gender = 1;
 
 if (gender == 1)
 {
-    if age < 30
+    if (age < 30)
     {
         Console.WriteLine("Kobieta poniżej 30 lat");
     }
