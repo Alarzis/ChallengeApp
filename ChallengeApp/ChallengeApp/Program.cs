@@ -1,40 +1,37 @@
-﻿/// Napisz w Program.cs kod, w którym:
-/// - zadeklarujesz zmienną z imieniem
-/// - zadeklarujesz zmienną z płcią (dobierz zmienną)
-/// - zadeklarujesz zmienną z wiekiem
-/// - zweryfikujesz dane i wyświetlisz
-/// jeden z komunikatów:
-/// (1): "Kobieta poniżej 30 lat"
-/// (2): "Ewa, lat 33"
-/// (3): "Niepełnoletni Mężczyzna"
-/// -----------------
-/// (możesz dodać swoje)
+﻿/// Przygotuj program, który policzy ile jakich cyfr
+/// występuje w podanej liczbie
+/// 
+/// Przykład:
+/// Wyniki dla liczby: 4566
+/// 0 => 0
+/// 1 => 0
+/// 2 => 0
+/// 3 => 0
+/// 4 => 1
+/// 5 => 1
+/// 6 => 2
+/// 7 => 0
+/// 8 => 0
+/// 9 => 0
+///int number = 4566;
+///string numberAsString = number.ToString();
+///char[] letters = numberAsString.ToArray();
 
 
-string name = "Ewa";
-int age = 33;
-int gender = 1;
+int number = 4566;
+string numberAsString = number.ToString();
+char[] letters = numberAsString.ToArray();
+int[] counter = new int[10];
+char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-if (gender == 1)
+Console.WriteLine("Poniżej wyświetlona jest ilość wystąpienia każdej cyfry w liczbie " + number + ":");
+
+for (int i = 0; i < numbers.Length; i++)
 {
-    if (age < 30)
+    for (int j = 0; j < letters.Length; j++)
     {
-        Console.WriteLine("Kobieta poniżej 30 lat");
+        if (letters[j] == numbers[i])
+            counter[i]++;
     }
-    else if (age == 33 && name == "Ewa")
-    {
-        Console.WriteLine("Ewa, lat 33");
-    }
-    else
-    {
-        Console.WriteLine("Kobieta powyżej 30 lat");
-    }
-}
-else if (age < 18)
-{
-    Console.WriteLine("Niepełnoletni mężczyzna");
-}
-else
-{
-    Console.WriteLine("Dorosły mężczyzna");
+    Console.WriteLine(numbers[i] + "=>" + counter[i]);
 }
