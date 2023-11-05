@@ -1,37 +1,55 @@
-﻿/// Przygotuj program, który policzy ile jakich cyfr
-/// występuje w podanej liczbie
+﻿/// 1. Stwórz klasę Employee, w której przechowasz imię, nazwisko, wiek
+/// oraz punkty pracownika w postaci liczb całkowitych.
 /// 
-/// Przykład:
-/// Wyniki dla liczby: 4566
-/// 0 => 0
-/// 1 => 0
-/// 2 => 0
-/// 3 => 0
-/// 4 => 1
-/// 5 => 1
-/// 6 => 2
-/// 7 => 0
-/// 8 => 0
-/// 9 => 0
-///int number = 4566;
-///string numberAsString = number.ToString();
-///char[] letters = numberAsString.ToArray();
+/// 2. Stwórz 3 pracowników i każdemu przydziel po 5 ocen z zakresu
+/// od 1 do 10.
+/// 
+/// 3. Napisz program, który wyszuka pracownika z najwyższą liczbą ocen
+/// a następnie wyświetli jego dane oraz wynik.
+ 
 
 
-int number = 4566;
-string numberAsString = number.ToString();
-char[] letters = numberAsString.ToArray();
-int[] counter = new int[10];
-char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+using ChallengeApp;
 
-Console.WriteLine("Poniżej wyświetlona jest ilość wystąpienia każdej cyfry w liczbie " + number + ":");
+Employee employee1 = new Employee ("Andrzej", "Borkowski", "31");
+Employee employee2 = new Employee ("Monika", "Misiak", "28");
+Employee employee3 = new Employee ("Ewa", "Nawrot", "36");
 
-for (int i = 0; i < numbers.Length; i++)
+employee1.AddScore(500);
+employee1.AddScore(5);
+employee1.AddScore(5);
+employee1.AddScore(5);
+employee1.AddScore(5);
+
+employee2.AddScore(2);
+employee2.AddScore(2);
+employee2.AddScore(2);
+employee2.AddScore(2);
+employee2.AddScore(2);
+
+employee3.AddScore(3);
+employee3.AddScore(3);
+employee3.AddScore(3);
+employee3.AddScore(3);
+employee3.AddScore(3);
+
+
+List<Employee> employees = new List<Employee>()
 {
-    for (int j = 0; j < letters.Length; j++)
+    employee1, employee2, employee3
+};
+
+int maxResult = -1;
+Employee employeeWithMaxResult = null;
+
+foreach (Employee employee in employees)
+{
+    if(employee.Result > maxResult)
     {
-        if (letters[j] == numbers[i])
-            counter[i]++;
+        employeeWithMaxResult = employee;
+        maxResult = employee.Result;
     }
-    Console.WriteLine(numbers[i] + "=>" + counter[i]);
-}
+};
+
+Console.WriteLine("W tym mięsiącu największą liczbę punktów, bo aż " + maxResult);
+Console.WriteLine("zdobywa nie kto inny, a " + employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + ", lat " + employeeWithMaxResult.Age + ".");
