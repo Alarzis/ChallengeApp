@@ -1,41 +1,43 @@
 namespace ChallengeApp.test
 {
-    public class Tests
+    public class EmpTests
     {
         [Test]
-        public void WhenEmployeeCollectTwoScores_ShouldCorrectResult1()
+        public void WhenEmployeeCollectGrades_ShouldReturnCorrectMax()
         {
-            //arrange
-            var employee = new Employee("Andrzej", "awdawd3245", "24");
-            employee.AddScore(5);
-            employee.AddScore(6);
-            employee.AddScore(7);
-            employee.AddScore(7);
-            employee.AddScore(7);
+            var employee = new Employee("Andrzej", "Borkowski");
+            employee.AddGrade(5);
+            employee.AddGrade(6);
+            employee.AddGrade(2);
 
-            //act
-            int result = employee.Result;
-
-           //assert
-           Assert.AreEqual(32, result);
+            var statisctics = employee.GetStatistics();
+            Assert.AreEqual(6, statisctics.Max);
         }
 
         [Test]
-        public void WhenEmployeeCollectTwoScores_ShouldCorrectResult2()
+        public void WhenEmployeeCollectGrades_ShouldReturnCorrectMin()
         {
-            //arrange
-            var employee = new Employee("Monika", "awdawd3245", "27");
-            employee.AddScore(-5);
-            employee.AddScore(-6);
-            employee.AddScore(-7);
-            employee.AddScore(-8);
-            employee.AddScore(-9);
+            var employee = new Employee("Andrzej", "Borkowski");
+            employee.AddGrade(12);
+            employee.AddGrade(10);
+            employee.AddGrade(14);
+            
+            
+            var statisctics = employee.GetStatistics();
+            Assert.AreEqual(10, statisctics.Min);
+        }
 
-            //act
-            int result = employee.Result;
-
-            //assert
-            Assert.AreEqual(-35, result);
+        [Test]
+        public void WhenEmployeeCollectGrades_ShouldReturnCorrectAverage()
+        {
+            var employee = new Employee("Andrzej", "Borkowski");
+            employee.AddGrade(12);
+            employee.AddGrade(10);
+            employee.AddGrade(8);
+            
+            
+            var statisctics = employee.GetStatistics();
+            Assert.AreEqual(10, statisctics.Average);
         }
     }
 }
