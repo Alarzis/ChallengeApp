@@ -16,9 +16,63 @@
 
         public void AddGrade(float grade)
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Nieprawidłowa wartość");
+            }
         }
 
+        public void AddGrade(string grade)
+        {
+            if(float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+
+        public void AddGrade(double grade)
+        {
+            var valueinfloat = (float)grade;
+            AddGrade(valueinfloat);
+        }
+
+        public void AddGrade(int grade)
+        {
+            var valueinfloat = (float)grade;
+            AddGrade(valueinfloat);
+        }
+
+        public void AddGrade(uint grade)
+        {
+            var valueinfloat = (float)grade;
+            AddGrade(valueinfloat);
+        }
+
+        public void AddGrade(long grade)
+        {
+            var valueinfloat = (float)grade;
+            AddGrade(valueinfloat);
+        }
+
+        public void AddGrade(ulong grade)
+        {
+            var valueinfloat = (float)grade;
+            AddGrade(valueinfloat);
+        }
+
+        public void AddGrade(decimal grade)
+        {
+            var valueinfloat = (float)grade;
+            AddGrade(valueinfloat);
+        }
         public Statistics GetStatistics()
         {
             var statisctics = new Statistics();
