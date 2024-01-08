@@ -1,10 +1,11 @@
 ﻿using ChallengeApp;
+using System;
 
 Console.WriteLine("Witamy w programie do oceny pracowników");
 Console.WriteLine("=======================================");
 Console.WriteLine();
 
-var employee = new Employee();
+var employee = new Employee("Andrzej", "Borkowski");
 
 Console.WriteLine("Podaj ocenę pracownika: ");
 while (true)
@@ -14,7 +15,16 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch(Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
+
     Console.WriteLine("Podaj kolejną ocenę, lub wciśnij Q i zatwierdź, żeby zakończyć");
 }
 
