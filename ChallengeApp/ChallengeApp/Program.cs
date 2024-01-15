@@ -30,6 +30,6 @@ while (true)
 
 var statisctics = employee.GetStatistics();
 Console.WriteLine($"Średnia z ocen: {statisctics.Average}");
-Console.WriteLine($"Najlepsza ocena: {statisctics.Min}");
-Console.WriteLine($"Najsłabsza ocena: {statisctics.Max}");
+Console.WriteLine($"Najlepsza ocena: {statisctics.Max}");
+Console.WriteLine($"Najsłabsza ocena: {statisctics.Min}");
 Console.WriteLine($"Ocena końcowa: {statisctics.AverageLetter}");
