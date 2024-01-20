@@ -2,7 +2,7 @@
 {
     public abstract class Person
     {
-        public Person(string name, string surname, char sex)
+        public Person(string name, string surname, string sex)
         {
             this.Name = name;
             this.Surname = surname;
@@ -13,6 +13,6 @@
 
         public string Surname { get; private set; }
 
-        public char Sex { get; private set;}
+        public string Sex { get; private set;}
     }
 }
