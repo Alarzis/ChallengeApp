@@ -14,14 +14,6 @@
 
         void AddGrade(int grade);
 
-        void AddGrade(uint grade);
-
-        void AddGrade(long grade);
-
-        void AddGrade(ulong grade);
-
-        void AddGrade(decimal grade);
-
         void AddGrade(char grade);
 
         Statistics GetStatistics();

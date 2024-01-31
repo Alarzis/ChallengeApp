@@ -122,29 +122,6 @@
             AddGrade(valueinfloat);
         }
 
-        public void AddGrade(uint grade)
-        {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
-
-        public void AddGrade(long grade)
-        {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
-
-        public void AddGrade(ulong grade)
-        {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
-
-        public void AddGrade(decimal grade)
-        {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
         public void AddGrade(char grade)
         {
             switch (grade)

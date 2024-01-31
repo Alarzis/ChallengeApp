@@ -1,21 +1,16 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
+
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
+        public EmployeeInMemory(string name, string surname)
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
         }
 
-        public string Name { get; private set; }
-
-        public string Surname { get; private set; }
-
-
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -27,7 +22,7 @@
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -36,51 +31,28 @@
             else if (char.TryParse(grade, out char result2))
             {
                 AddGrade(result2);
-            }    
+            }
             else
             {
                 throw new Exception($"String {grade} is not float");
             }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             var valueinfloat = (float)grade;
             AddGrade(valueinfloat);
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             var valueinfloat = (float)grade;
             AddGrade(valueinfloat);
         }
 
-        public void AddGrade(uint grade)
+        public override void AddGrade(char grade)
         {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
-
-        public void AddGrade(long grade)
-        {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
-
-        public void AddGrade(ulong grade)
-        {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
-
-        public void AddGrade(decimal grade)
-        {
-            var valueinfloat = (float)grade;
-            AddGrade(valueinfloat);
-        }
-        public void AddGrade(char grade)
-        {
-            switch(grade)
+            switch (grade)
             {
                 case 'A':
                 case 'a':
@@ -107,7 +79,7 @@
             }
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -122,8 +94,8 @@
             }
 
             statistics.Average /= this.grades.Count;
-            
-            switch(statistics.Average)
+
+            switch (statistics.Average)
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = 'A';
@@ -141,7 +113,7 @@
                     statistics.AverageLetter = 'E';
                     break;
             }
-            
+
             return statistics;
         }
     }
