@@ -1,4 +1,7 @@
-﻿namespace ChallengeApp
+﻿using static ChallengeApp.EmployeeBase;
+
+namespace ChallengeApp
+
 {
     public interface IEmployee
     {
