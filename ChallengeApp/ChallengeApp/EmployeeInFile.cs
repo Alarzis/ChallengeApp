@@ -92,13 +92,11 @@
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            var counter = 0;
 
             if (File.Exists(fileName))
             {
+                int count = 0;
+
                 using (var reader = File.OpenText(fileName))
 
                 {
@@ -107,38 +105,14 @@
                     while (line != null)
                     {
                         var number = float.Parse(line);
-                        statistics.Max = Math.Max(statistics.Max, number);
-                        statistics.Min = Math.Min(statistics.Min, number);
-                        statistics.Average += number;
-                        counter++;
+                        statistics.AddGrade(number);
+                        count++;
                         line = reader.ReadLine();
                     }
                 }
-                statistics.Average /= counter;
-                
-                switch (statistics.Average)
-                {
-                    case var average when average >= 80:
-                        statistics.AverageLetter = 'A';
-                        break;
-                    case var average when average >= 60:
-                        statistics.AverageLetter = 'B';
-                        break;
-                    case var average when average >= 40:
-                        statistics.AverageLetter = 'C';
-                        break;
-                    case var average when average >= 20:
-                        statistics.AverageLetter = 'D';
-                        break;
-                    default:
-                        statistics.AverageLetter = 'E';
-                        break;
-                }
-                
             }
-
             return statistics;
-            
+
         }
     };
 }
